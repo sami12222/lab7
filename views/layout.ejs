@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title || "Lab 7" %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1><%= title || "Laboratoire 7" %></h1>
+      <% if (me && me.id) { %>
+        <form method="post" action="/logout">
+          <button type="submit">Se déconnecter</button>
+        </form>
+      <% } %>
+    </header>
+
+    <!-- le contenu de chaque page est ici -->
+    <%- include(content) %>
+  </body>
+</html>

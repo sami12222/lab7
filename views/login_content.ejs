@@ -1,0 +1,14 @@
+<div class="card">
+  <h2>Se connecter</h2>
+  <% if (typeof error !== 'undefined' && error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+  <form method="post" action="/login">
+    <label for="login">Login</label>
+    <input id="login" name="login" required />
+    <label for="password">Mot de passe</label>
+    <input id="password" name="password" type="password" required />
+    <button type="submit">Entrer</button>
+  </form>
+  <p class="small">Utilisez les comptes de démonstration créés par <code>sql/schema.sql</code>.</p>
+</div>

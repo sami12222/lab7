@@ -1,0 +1,53 @@
+<div class="card">
+  <h2>Bienvenue, <%= mine.login %> (niveau <%= me.level %>)</h2>
+  <p><strong>Message d'accueil :</strong></p>
+  <p class="card"><%= mine.welcome_text %></p>
+
+  <% if (me.level >= 1) { %>
+  <form method="post" action="/update-message">
+    <label for="welcome_text">Modifier mon message d'accueil</label>
+    <textarea id="welcome_text" name="welcome_text" rows="3"><%= mine.welcome_text %></textarea>
+    <button type="submit">Enregistrer</button>
+  </form>
+  <% } %>
+
+  <% if (me.level >= 2) { %>
+  <form method="post" action="/update-password">
+    <label for="password">Modifier mon mot de passe</label>
+    <input id="password" name="password" type="text" value="<%= mine.password %>" />
+    <button type="submit">Enregistrer</button>
+  </form>
+  <% } %>
+</div>
+
+<% if (me.level >= 3) { %>
+<div class="card">
+  <h2>Administration — Tous les comptes</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Login</th><th>Niveau</th><th>Message</th><th>Mot de passe</th></tr>
+    </thead>
+    <tbody>
+      <% allUsers.forEach(u => { %>
+        <tr>
+          <td><%= u.id %></td>
+          <td><%= u.login %></td>
+          <td><%= u.level %></td>
+          <td>
+            <form method="post" action="/admin/update/<%= u.id %>">
+              <textarea name="welcome_text" rows="2"><%= u.welcome_text %></textarea>
+              <button type="submit">MAJ message</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="/admin/update/<%= u.id %>">
+              <input name="password" type="text" value="<%= u.password %>" />
+              <button type="submit">MAJ mot de passe</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<% } %>

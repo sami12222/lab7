@@ -1,6 +1,4 @@
-# Laboratoire 7 — SQL avec Express + gestion de session
-
-Ce dépôt contient une implémentation complète, minimaliste et très commentée pour répondre au sujet **Laboratoire 7**.
+# Laboratoire 7 
 
 ## Contenu
 
